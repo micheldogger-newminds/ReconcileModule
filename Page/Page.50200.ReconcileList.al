@@ -60,7 +60,7 @@ page 50200 "Consile List"
             {
                 trigger OnAction();
                 begin
-                    
+                  gCduConsileMgt.fConsileApplyID(Rec);
                 end;
             }
         }
