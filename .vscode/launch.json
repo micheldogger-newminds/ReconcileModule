@@ -6,8 +6,8 @@
             "request": "launch",
             "name": "Your own server",
             "server": "http://localhost",
-            "serverInstance": "nav",
-            "authentication": "UserPassword",
+            "serverInstance": "DynamicsNAV110",
+            "authentication": "Windows",
             "startupObjectId": 22
         }
     ]
