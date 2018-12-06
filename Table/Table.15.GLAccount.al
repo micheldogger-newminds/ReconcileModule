@@ -4,9 +4,12 @@ tableextension 50200 T15_GLAccount_Extension extends "G/L Account"
     {
         field(50200;"Reconcile Allowed";Boolean)
         {
-         //   FieldPropertyName = FieldPropertyValue;
-         //   DataClassification = ToBeClassified;
-        }// Add changes to table fields here
+        }
+
+        field(50201;"Last Reconcile-ID";Code[20])
+        {
+         Editable = false;
+        }
     }
     
     var
