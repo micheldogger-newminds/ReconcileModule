@@ -8,8 +8,21 @@ tableextension 50200 T15_GLAccount_Extension extends "G/L Account"
 
         field(50201;"Last Reconcile-ID";Code[20])
         {
-         Editable = false;
         }
+
+        field(50202;"Reconcile Balance";Decimal)
+        {
+        }
+        field(50203;"Last Doc. Reconcile-ID";Code[20])
+        {
+        }
+        
+        field(50204;"Doc. Reconcile Balance";Decimal)
+        {
+        }
+        field(50205;"Doc. Reconcile Filter";Code[20])
+        {
+        }        
     }
     
     var
