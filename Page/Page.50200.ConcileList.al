@@ -9,15 +9,15 @@ page 50200 "Consile List"
         {
             repeater(Group)
             {
-                field("Posting Date","Posting Date")
+                field("Posting Date";"Posting Date")
                 {
                     
                 }
-                field("Document Type","Document Type")
+                field("Document Type";"Document Type")
                 {
                     
                 }
-                field("Document No.","Document No.")
+                field("Document No.";"Document No.")
                 {
                     
                 }
@@ -44,7 +44,8 @@ page 50200 "Consile List"
                 field("External Document No.";"External Document No.")
                 {
                     
-                }                        
+                }      
+            }                  
         }
         area(factboxes)
         {
@@ -55,12 +56,16 @@ page 50200 "Consile List"
     {
         area(processing)
         {
-            action(ActionName)
+            action(SetAppliesToID)
             {
                 trigger OnAction();
                 begin
+                    
                 end;
             }
         }
     }
+
+    var
+        gCduConsileMgt : Codeunit ConsileMgt;    
 }
