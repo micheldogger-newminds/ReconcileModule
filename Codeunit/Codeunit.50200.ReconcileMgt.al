@@ -1,7 +1,7 @@
 codeunit 50200 ConsileMgt
 {
 
-    Permissions = tabledata "G/L Entry"=rm;
+    Permissions = tabledata "G/L Entry"=rm, tabledata "G/L Account"=rm;
 
     trigger OnRun();
     begin
@@ -15,12 +15,16 @@ codeunit 50200 ConsileMgt
         if not pvRecGLentry.FindSet then
           error(TxtErrNothingToProcess);
 
+        // Get the G/L Account from the first record. Will be used for Checks
+        lRecGLAccount.GET(pvRecGLentry."G/L Account No.");
+
         // Perform checks
         repeat
           lRecGLAccount.GET(pvRecGLentry."G/L Account No.");
           lRecGLAccount.TestField("Direct Posting",true);
           lRecGLAccount.TestField("Reconcile Allowed");
           pvRecGLentry.TestField(Reconciled,false);
+          pvRecGLentry.testfield("G/L Account No.",lRecGLAccount."No."); // Must be the same for every G/L Entry
         until pvRecGLentry.next=0;
 
         // Update the Last Reconcile-ID on the G/L Account
@@ -28,6 +32,7 @@ codeunit 50200 ConsileMgt
           true : lRecGLAccount."Last Reconcile-ID" := '00000001';
           false: lRecGLAccount."Last Reconcile-ID" := IncStr(lRecGLAccount."Last Reconcile-ID");
         end;
+        lRecGLAccount.Modify(FALSE);
 
         pvRecGLentry.FindSet;
         repeat
